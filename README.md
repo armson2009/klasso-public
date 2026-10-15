@@ -6,3 +6,4 @@ Pages publiques de KLASSO :
 - [Suppression du compte](https://armson2009.github.io/klasso-public/suppression-compte.html)
 - [Vidéo de présentation](https://armson2009.github.io/klasso-public/presentation/)
 - [Toutes les vidéos](https://armson2009.github.io/klasso-public/videos/) : suivi ASER, évaluations, KLASSO ACADEMY, fiche et bulletin
+- [Vidéos pour les statuts WhatsApp](https://armson2009.github.io/klasso-public/videos/statuts/) : format portrait, parties de moins d'une minute
