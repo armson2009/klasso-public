@@ -24,7 +24,7 @@
 <body>
 <main>
 <h1>Politique de confidentialité de KLASSO</h1>
-<p>Version du 05/10/2026.</p>
+<p>Version du 25/11/2026.</p>
 <p>KLASSO est une application pour l'école primaire ivoirienne : appel, fiches de cours,
 évaluations, suivi des élèves et du personnel, à l'usage des directeurs d'école (DEP), des
 conseillers pédagogiques (CP), des enseignants et des services de l'IEPP.</p>
@@ -33,18 +33,26 @@ conseillers pédagogiques (CP), des enseignants et des services de l'IEPP.</p>
 <p>KLASSO est une application indépendante, éditée à titre personnel, sans lien officiel avec le ministère, la DRENA ou l'IEPP.</p>
 <h2>1. Qui utilise l'application</h2>
 <p>Seuls des adultes ont un compte : directeur, conseiller pédagogique, enseignant, point focal ASER,
-inspecteur, agent RH. <strong>Les élèves n'ont pas de compte et n'utilisent pas l'application.</strong> Leurs
+inspecteur, agent RH, service Examens et Concours, service Pédagogie. <strong>Les élèves n'ont pas de compte et n'utilisent pas l'application.</strong> Leurs
 données sont saisies par l'école.</p>
 <h2>2. Données collectées</h2>
 <p><strong>Compte et profil professionnel</strong> : nom, adresse e-mail, numéro de téléphone, rôle, école et secteur
 de rattachement, mot de passe (conservé uniquement sous forme chiffrée, jamais lisible).
 Pour les enseignants et directeurs : sexe, matricule, diplômes et formations, corps et grade,
-dates de carrière, signature (image) utilisée pour viser les documents.</p>
+dates de carrière, signature (image) utilisée pour viser les documents. La signature est aussi gardée dans un espace privé du serveur (visible de son seul propriétaire) pour la retrouver sur chacun de ses téléphones ; celle d'un Inspecteur n'est lue que par le CP et l'enseignant des bulletins qu'il a visés.</p>
 <p><strong>Données des élèves</strong>, saisies par l'école : nom et prénoms, date de naissance, sexe, matricule,
 noms du père, de la mère ou du tuteur, téléphone et adresse du tuteur, classe et inscriptions, présences,
 notes et décisions de fin d'année, résultats ASER, et les éventuelles pièces jointes au dossier (extrait de naissance, pièce d'identité d'un parent,
-certificat médical). Ces fichiers sont stockés dans un espace privé, accessible seulement à l'école concernée.</p>
+certificat médical). Ces fichiers sont stockés dans un espace privé, accessible seulement à l'école concernée.
+La <strong>photo d'identité</strong> de l'élève, quand l'école l'ajoute, est envoyée dans un autre espace privé ; elle ne sert qu'à l'école et, pour les élèves de CM2 inscrits à un examen (CEPE), au service Examens et Concours de l'IEPP, pour imprimer la fiche de table.</p>
+<p>L'<strong>import d'une liste de classe</strong> à partir d'une photo se fait entièrement sur le téléphone (lecture du texte par ML Kit, sans connexion) : la photo n'est ni envoyée ni conservée ; seuls les élèves que l'enseignant valide sont enregistrés.</p>
 <p><strong>Travail pédagogique</strong> : fiches de cours, évaluations, progressions, visites de classe, bulletins de visite.</p>
+<p><strong>Remédiation PNAPAS</strong> (soutien aux élèves en difficulté) : les groupes de remédiation d'une école (nom du groupe,
+discipline, niveau, nom du facilitateur et liste des élèves qui le composent, formés d'après leur dernier niveau
+ASER), la liste de présence de chaque groupe (absent, ou passe au niveau supérieur) et les <strong>plans de session
+hebdomadaires</strong> (objectifs du mois et de la semaine, activités de chaque jour, stratégie, matériel, durée et
+observations de l'enseignant). Les plans de session ne contiennent <strong>aucun nom d'élève</strong> : l'application invite à
+n'en écrire aucun dans les observations. Les groupes sont constitués sur le téléphone, sans service extérieur.</p>
 <p><strong>Jeu KLASSO Académie</strong> : scores et parties. Dans le classement, chaque joueur apparaît sous un pseudonyme
 (« Joueur XXXX » par défaut) ou, s'il le choisit, sous son vrai nom.</p>
 <p><strong>Ce que l'application ne collecte pas</strong> : aucune localisation, aucun contact du téléphone, aucun
@@ -66,6 +74,27 @@ commerciales.</p>
 <li><strong>Sur le serveur</strong> : lorsque le téléphone a accès à Internet, les données sont sauvegardées sur la
   plateforme Supabase, hébergée dans l'Union européenne (Irlande). Les échanges sont chiffrés (HTTPS) et l'accès
   est limité par rôle : chaque personne ne voit que les données de son école ou de son secteur.</li>
+<li><strong>Assistant de rédaction des bulletins de visite</strong> (facultatif, conseillers pédagogiques avec compte) : quand le
+  CP le demande, la grille d'observation notée (critères et notes), le type de bulletin et la séance observée
+  (niveau, discipline, thème, leçon, activité, durée) sont transmis, par le serveur de KLASSO, au service d'intelligence
+  artificielle d'Anthropic (modèle Claude), qui propose une rédaction de la synthèse. Pour une séance de soutien,
+  l'activité choisie dans la liste des guides de remédiation est transmise avec son matériel et son déroulé officiels
+  (texte des guides, sans donnée personnelle). <strong>Aucun nom</strong> (enseignant,
+  école, élève) ni aucune autre donnée personnelle n'est transmis. Le CP relit et modifie la proposition avant de
+  l'insérer. KLASSO conserve seulement le nombre de demandes par compte (limite quotidienne), pas leur contenu.</li>
+<li><strong>Assistant de rédaction des fiches de cours</strong> (facultatif, enseignants et directeurs avec compte) : quand le
+  titulaire le demande, le contenu pédagogique de la séance (format, niveau, discipline, thème, leçon, séance, durée,
+  matériel, support, habiletés, contenus, situation d'apprentissage déjà écrite) est transmis de la même façon au
+  service d'Anthropic, qui propose la situation d'apprentissage et le déroulement. Ni le nom de l'école, ni celui de
+  l'enseignant, ni aucune donnée d'élève ne sont transmis ; le titulaire relit la proposition avant de l'insérer.</li>
+<li><strong>Recommandations PNAPAS</strong> (facultatif, enseignants, directeurs et conseillers pédagogiques avec compte) : quand
+  l'utilisateur le demande depuis une fiche de suivi ASER, des effectifs et des nombres d'élèves par niveau ASER
+  (classe, niveaux de l'école ou total de chaque école du secteur), les nombres de re-tests, de séances de
+  remédiation et de visites, et, pour l'enseignant et le CP, les conclusions des bulletins de visite envoyés (points
+  à améliorer, recommandations, appréciation) sont transmis de la même façon au service d'Anthropic, qui propose des
+  recommandations tirées des documents officiels du PNAPAS. Aucun nom d'élève ni d'enseignant n'est transmis ; les
+  écoles d'un secteur sont envoyées sous un numéro (« École 1 », « École 2 »…) et leur nom n'est remis que sur
+  l'appareil. La réponse est gardée sur l'appareil seulement.</li>
 </ul>
 <h2>5. Qui peut voir quoi</h2>
 <table>
@@ -78,7 +107,7 @@ commerciales.</p>
 <tbody>
 <tr>
 <td>Enseignant</td>
-<td>sa classe et son propre travail</td>
+<td>sa classe et son propre travail ; s'il est désigné facilitateur de remédiation par son directeur : les classes PNAPAS (CE1 à CM2) de son école et leurs élèves, pour composer ses groupes, et les groupes qui lui sont confiés</td>
 </tr>
 <tr>
 <td>Directeur (DEP)</td>
@@ -86,11 +115,19 @@ commerciales.</p>
 </tr>
 <tr>
 <td>Conseiller pédagogique (CP)</td>
-<td>les écoles de son secteur : documents et suivi, sans liste nominative des élèves</td>
+<td>les écoles de son secteur : documents et suivi, sans liste nominative des élèves ; les plans de session de remédiation de ces écoles (sans nom d'élève, seulement le nombre d'élèves par groupe)</td>
+</tr>
+<tr>
+<td>Service Examens et Concours de l'IEPP</td>
+<td>pour les seuls candidats d'un examen (CM2) : nom, prénoms, date de naissance, sexe, matricule, école, photo. Aucun contact des parents</td>
+</tr>
+<tr>
+<td>Service Pédagogie de l'IEPP</td>
+<td>les bulletins de visite de classe et les fiches de suivi mensuelles des CP de son IEPP, <strong>une fois visés par l'Inspecteur</strong>, en lecture seule, avec les noms des enseignants et des conseillers et les signatures de l'Inspecteur et des CP. Aucune liste nominative d'élèves</td>
 </tr>
 <tr>
 <td>Inspecteur, agent RH, point focal ASER</td>
-<td>chiffres et documents visés de leur circonscription, en lecture seule</td>
+<td>chiffres et documents visés de leur circonscription, en lecture seule ; l'Inspecteur lit aussi les bulletins de visite de classe des CP de son IEPP pour les viser ; l'Inspecteur et l'agent RH lisent les plans de session de remédiation des écoles de leur IEPP (sans nom d'élève)</td>
 </tr>
 <tr>
 <td>Administrateur de KLASSO</td>
